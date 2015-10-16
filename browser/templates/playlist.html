@@ -1,0 +1,49 @@
+<div>
+    <h3>{{ playlist.name }}</h3>
+    <table class='table' ng-show="playlist.songs.length">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Artists</th>
+                <th>Genres</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="song in playlist.songs" ng-class="{active: isCurrent(song)}">
+                <td>
+                    <button ng-hide="isCurrent(song)" ng-click="start(song)" class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-play"></span>
+                    </button>
+                </td>
+                <td>{{ song.name }}</td>
+                <td><span ng-repeat="artist in song.artists">{{ artist.name }} </span></td>
+                <td>{{ song.genres.join(', ') }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <small ng-hide="playlist.songs.length">No songs.</small>
+    <hr>
+
+    <form class="form-horizontal" name="addSongForm">
+        <fieldset>
+            <legend>Add to Playlist</legend>
+            <!-- {{ newPlaylistForm | json }} -->
+            <div class="form-group">
+                <label class="col-xs-2 control-label">Title</label>
+                <div class="col-xs-10">
+
+                    <select name="newPlaylistSong" class="form-control" >
+                        <option ng-repeat="song in songs">{{ song.name }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-10 col-xs-offset-2">
+                    <button type="submit" class="btn btn-success" ng-click="addSong()" ng-disabled="addSongForm.$dirty">Add Song</button>
+                </div>
+            </div>
+        </fieldset>
+
+    </form>
+</div>
