@@ -15,6 +15,12 @@
                 </div>
             </div>
         </fieldset>
-        <div class="alert alert-warning" ng-show="newPlaylistForm.$invalid && newPlaylistForm.$dirty">Please enter a valid title (max 16 characters)</div>
+        <div ng-messages="newPlaylistForm.newPlaylistTitle.$error" role="alert">
+            <div ng-message="required">Please enter a valid title</div>
+            <div ng-message="maxlength"> You entered way too many characters! (more than 16)</div>
+        </div>
+        
+
+        <!-- <div class="alert alert-warning" ng-show="newPlaylistForm.$invalid && newPlaylistForm.$dirty">Please enter a valid title (max 16 characters)</div> -->
     </form>
 </div>
