@@ -38,6 +38,24 @@ app.controller('PlaylistCtrl', function ($scope, $stateParams, thePlaylist, Play
 
 	}
 	
+	$scope.removeSong = function (song){
+		console.log("start of remove song, song: ", typeof song);
+
+		PlaylistFactory.removeSong(song, $scope.playlist._id)
+		.then (function (response){
+			console.log("after deleting from DB, we're here! ", response);
+		
+			 for (var i=0; i<$scope.playlist.songs.length; i++){
+			    if ($scope.playlist.songs[i]._id == song._id){
+			      $scope.playlist.songs.splice(i, 1);
+			      break;
+			    }
+			  }
+
+			$scope.addSongForm.$setPristine();
+			$scope.selectedSong = " ";
+		})
+	}
 
 
 });

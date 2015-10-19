@@ -71,6 +71,20 @@ app.factory('PlaylistFactory', function ($http, SongFactory) {
 
     }
 
+    PlaylistFactory.removeSong = function (song, playlistId){
+        console.log("in removeSong, song: ", song._id);
+        return $http.delete("/api/playlists/" + playlistId + "/songs/" + song._id)
+        .then (function (response){
+            //console.log("remove song response ", response);
+            return;
+        }).catch (function (err){
+            console.log("error", err);
+        })
+
+    }
+    
+
+
     return PlaylistFactory;
 
 });

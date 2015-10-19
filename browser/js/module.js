@@ -1,4 +1,4 @@
-var app = angular.module('juke', ['ui.router']);
+var app = angular.module('juke', ['ui.router', 'ngMessages']);
 
 
 app.controller("SidebarCtrl", function ($scope, PlaylistFactory){

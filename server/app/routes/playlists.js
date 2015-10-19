@@ -65,11 +65,21 @@ router.post('/:playlistId/songs', function(req, res, next) {
     .then(null, next)
 })
 
-router.delete('/:playlistId/songs', function(req, res, next) {
-  req.playlist.songs.pull(req.body.song)
+router.delete('/:playlistId/songs/:songId', function(req, res, next) {
+
+  //req.playlist.songs.pull({_id: req.params.songId});
+  var index;
+  for (var i=0; i<req.playlist.songs.length; i++){
+    if (req.playlist.songs[i]._id == req.params.songId){
+      index=i;
+      break;
+    }
+  }
+  req.playlist.songs.splice(index, 1);
   req.playlist.save()
     .then(function() {
       res.status(204)
+      res.send("WORKED");
     })
     .then(null, next)
 })
