@@ -57,5 +57,22 @@ app.controller('PlaylistCtrl', function ($scope, $stateParams, thePlaylist, Play
 		})
 	}
 
+	// var localSongs = new Bloodhound({
+	// 	datumTokenizer: function (d) { return Bloodhound.tokenizers.whitespace(d.name);},
+	// 	queryTokenizer: Bloodhound.tokenizers.whitespace,
+	// 	local: $scope.songs
+	// 	});
+
+	// localSongs.initialize();
+
+	// $scope.songOptions = {
+	// 	highlight: true
+	// }
+
+	// $scope.songData = {
+	// 	displayKey: 'name',
+	// 	source: localSongs.ttAdapter()
+	// }
+
 
 });

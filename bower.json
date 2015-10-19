@@ -1,0 +1,24 @@
+{
+  "name": "juke",
+  "description": "A generated project at Fullstack Academy",
+  "main": "server/start.js",
+  "authors": [
+    "Uma Chandran <umachandran6@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/codebyuma/juke-4-forms",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-messages": "~1.4.7",
+    "angular-typeahead": "~0.2.4",
+    "jquery": "~2.1.4",
+    "bloodhound": "~1.0.4"
+  }
+}

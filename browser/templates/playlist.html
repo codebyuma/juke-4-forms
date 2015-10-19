@@ -39,8 +39,10 @@
 
                     <select name="newPlaylistSong" class="form-control" ng-model="selectedSong">
                         <option value="{{song}}" ng-repeat="song in songs">{{ song.name }}</option>
-
                     </select>
+
+<!--                     <input type="text" class="sfTypeahead" options="songOptions" datasets="songData" ng-model="selectedSong"> -->
+                    
                 </div>
             </div>
             <div class="form-group">
