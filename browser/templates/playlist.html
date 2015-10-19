@@ -33,17 +33,20 @@
                 <label class="col-xs-2 control-label">Title</label>
                 <div class="col-xs-10">
 
-                    <select name="newPlaylistSong" class="form-control" >
-                        <option ng-repeat="song in songs">{{ song.name }}</option>
+                    <select name="newPlaylistSong" class="form-control" ng-model="selectedSong">
+                        <option value="{{song}}" ng-repeat="song in songs">{{ song.name }}</option>
+
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-xs-10 col-xs-offset-2">
-                    <button type="submit" class="btn btn-success" ng-click="addSong()" ng-disabled="addSongForm.$dirty">Add Song</button>
+                    <button type="submit" class="btn btn-success" ng-click="addSong(selectedSong)" ng-disabled="addSongForm.$pristine">Add Song</button>
                 </div>
             </div>
         </fieldset>
 
     </form>
 </div>
+
+<!-- ng-disabled="addSongForm.$dirty" -->

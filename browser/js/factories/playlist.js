@@ -23,7 +23,7 @@
 
 // })
 
-app.factory('PlaylistFactory', function ($http) {
+app.factory('PlaylistFactory', function ($http, SongFactory) {
 
     var cachedPlaylists = [];
 
@@ -53,6 +53,22 @@ app.factory('PlaylistFactory', function ($http) {
     		var playlist = response.data
             return playlist;
     	})
+        .then (function (playlist){
+            playlist.songs = playlist.songs.map(function (s) {
+                return SongFactory.convert(s, playlist.artists);
+            });
+            return playlist;
+        })
+    }
+
+    PlaylistFactory.addSong = function (song, playlistId){
+  
+        return $http.post("/api/playlists/" + playlistId + "/songs", {song: song})
+        .then (function (response){
+            //console.log("add song response: ", response);
+            return response.data;
+        })
+
     }
 
     return PlaylistFactory;
